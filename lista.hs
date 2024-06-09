@@ -42,5 +42,3 @@ esCapicua lista = lista == reverse lista
 customHead :: [a] -> [a]
 customHead [] = []
 customHead (cabeza:_) = [cabeza]
-
-
