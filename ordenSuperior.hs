@@ -1,4 +1,6 @@
 -- demostraciones de inferencias
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use map" #-}
 espejo :: t -> t
 espejo x = x
 
@@ -75,7 +77,7 @@ equiposCon _ [] = 0
 equiposCon otraFuncion (equipo:equiposRestantes)
   | otraFuncion equipo = 1 + equiposCon otraFuncion equiposRestantes
   | otherwise = equiposCon otraFuncion equiposRestantes
-  
+
 {- orden superior propias de haskell
   filter even [1,2,3,4,5,6,7,8]
   map sqrt [1,2,3,4,5,6,7,8]
@@ -88,3 +90,28 @@ equiposCon otraFuncion (equipo:equiposRestantes)
   map (\ e -> contratarJugador "Diego" e)
   map (\ e -> e*2 ) [1,2,3,4,5]
 -}
+
+-- Orden Superior
+data Persona = Persona {
+  name:: String,
+  edad:: Int
+}
+
+listaPersonas = [Persona "" 20, Persona "" 30, Persona "" 40, Persona "" 50, Persona "" 60]
+
+promedioEdades :: [Persona] -> Float
+promedioEdades personas = fromIntegral ((sum . edades) personas) / fromIntegral (length personas)
+
+edades :: [Persona] -> [Int]
+edades [] = []
+edades (x:xs) = edad x : edades xs
+
+
+-- Doble de una lista de Numeros
+-- El orden Superior esta en "algo"
+
+doble n = n * 2 
+
+aplicarATodos :: (Int -> Int) -> [Int] -> [Int]
+aplicarATodos algo [] = []
+aplicarATodos algo (x:xs) = algo x : aplicarATodos algo xs

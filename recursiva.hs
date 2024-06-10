@@ -12,7 +12,7 @@ factorial n
 -- Genere la función sumatoria de los elementos de una lista
 -- sum de list
 sumatoria :: [Int] -> Int
-sumatoria []     = 0
+sumatoria [] = 0
 sumatoria (x:xs) = x + sumatoria xs
 
 -- Genere la función longitud de una lista
@@ -52,3 +52,10 @@ esto se puede hacer directamente [1..], [1,2..], [1,2..3]
 -}
 funcionInfinita :: Int -> [Int]
 funcionInfinita comienzo = comienzo : funcionInfinita (comienzo + 1)
+
+-- Ejemplo de numero Biranio
+binario :: Int -> Int
+binario 0 = 0
+binario 1 = 1
+binario n = mod n 2 + binario (div n 2) * 10
+
