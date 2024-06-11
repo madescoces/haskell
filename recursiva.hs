@@ -59,3 +59,16 @@ binario 0 = 0
 binario 1 = 1
 binario n = mod n 2 + binario (div n 2) * 10
 
+-- Capicua con recursividad
+esCapicua :: (Ord a) => [a] -> Bool
+esCapicua [] = True
+esCapicua [_] = True
+esCapicua (cabeza:cola)
+  | cabeza == last cola = esCapicua (init cola)
+  | otherwise = False
+
+-- Fibonacci 0 1 1 2 3 5 8 13
+fibonacci :: Int -> Int
+fibonacci 1      = 0
+fibonacci 2      = 1
+fibonacci numero = fibonacci (numero - 1) + fibonacci (numero - 2)

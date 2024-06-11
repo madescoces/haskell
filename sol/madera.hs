@@ -1,5 +1,8 @@
 cuadruple :: Int -> Int
-cuadruple nro = 4*nro
+cuadruple nro = 4 * nro
+
+-- Maderera ejercicio
+largoDeListon :: Int
 largoDeListon = 300
 
 maderaCuadro :: Int -> Int
@@ -11,10 +14,9 @@ meAlcanza largo = maderaCuadro largo <= largoDeListon
 -- funcion compuesta
 puedohacerCuadroDe :: Int -> Bool
 -- puedohacerCuadroDe lado = meAlcanza (maderaCuadro lado)
-puedohacerCuadroDe = meAlcanza.maderaCuadro
+puedohacerCuadroDe = meAlcanza . maderaCuadro
 
 -- Que porcentaje de listón sobraría para armar un cuadro de tamaño 50 de lado.
-
 meSobra :: Int -> Int
 meSobra lado
   | meAlcanza lado = largoDeListon - maderaCuadro lado
@@ -42,7 +44,7 @@ velocidadCaidaLibre tiempo = tiempo * gravedad
 
 -- D = 0.5 * t^2 * g
 distanciaRecorrida :: Float -> Float
-distanciaRecorrida tiempo = 1/2 * tiempo ** 2 * gravedad
+distanciaRecorrida tiempo = 1 / 2 * tiempo ** 2 * gravedad
 
 altura :: Float
 altura = 80
@@ -50,37 +52,20 @@ altura = 80
 rebotaEnElPiso :: Float -> Bool
 rebotaEnElPiso tiempo = distanciaRecorrida tiempo >= altura
 
--- Pattern Matching
-color :: String -> String
-color "banana" = "amarillo"
-color "manzana" = "rojo"
-color "limon" = "amarillo"
-
 -- Type Classes
 elMayorDeTres :: Ord a => a -> a -> a -> a
-elMayorDeTres a b c = maximum [a,b,c]
+elMayorDeTres a b c = maximum [a, b, c]
 
--- Fibonacci 0 1 1 2 3 5 8 13
-
-fibonacci :: Int -> Int
-fibonacci 1 = 0
-fibonacci 2 = 1
-fibonacci numero = fibonacci (numero - 1) + fibonacci (numero - 2)
+-- Pattern Matching
+color :: String -> String
+color "banana"  = "amarillo"
+color "manzana" = "rojo"
+color "limon"   = "amarillo"
 
 horarioDeCierre :: String -> Bool -> Int
 horarioDeCierre "Domingo" True = 13
 horarioDeCierre "domingo" True = 13
 horarioDeCierre "Sabado" False = 21
 horarioDeCierre "sabado" False = 21
-horarioDeCierre _ True = 20
-horarioDeCierre dia False = 12 + length dia
-
--- ES ACA PABLITOOOOOOOOOOOO
-
--- Capicua con recursividad
-esCapicua [] = True
-esCapicua [_] = True
-esCapicua (cabeza:cola) 
-  | cabeza == last cola = esCapicua (init cola)
-  | otherwise = False
-
+horarioDeCierre _ True         = 20
+horarioDeCierre dia False      = 12 + length dia

@@ -87,13 +87,22 @@ data Estudiante = Estudiante
   { nombre :: String
   , legajo :: Int
   , nota   :: Float
-  }
+  } deriving (Show, Eq)
 
-pablo :: Estudiante 
+pablo :: Estudiante
 pablo = Estudiante "pablo" 1 2
 
 aprobado :: Float
 aprobado = 4
 
-estaAprobado:: Estudiante -> Bool
+estaAprobado :: Estudiante -> Bool
 estaAprobado estudiante = nota estudiante >= 4
+
+leFueMejorA :: Estudiante -> Estudiante -> Bool
+leFueMejorA estudiante1 estudiante2 = nota estudiante1 > nota estudiante2
+
+cambiarNota :: Estudiante -> Float -> Estudiante
+cambiarNota estudiante nuevaNota
+  | nuevaNota < 0 = error "La nota no puede ser negativa"
+  | nuevaNota > 10 = error "La nota no puede ser mayor a 10"
+  | otherwise = estudiante {nota = nuevaNota}
